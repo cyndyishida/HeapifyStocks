@@ -1,4 +1,5 @@
 from math import ceil, log2
+import random
 
 def swap(collection, a, b):
     c = collection[a] 
@@ -18,21 +19,26 @@ class Heap ( object ):
         self.__max = greaterThan
     
     def __repr__(self ) :
-        return str(self.__mList)
+        return self.__str__()
+
 
     def __str__(self ) :
         printMe = "Heap contains: {} nodes\n".format(self.__mCount)
         i = 1
+        max_len = ( 2 ** (ceil(log2(self.__mCount)) ) * 2 )
         for k in range(ceil(log2(self.__mCount)) ):
             for n in range(2**k) :
                 if i <= self.__mCount:
-                    printMe += " {:^d} ".format(self.__mList[ i])
+                    wid = ceil(max_len/ (2 **k))
+                    num = "{0:{1}>2d}".format(self.__mList[ i ], "0")
+                    printMe += "{0:{1}^{width}}".format(num, "-", width = wid )
                     i += 1
                 else:
                     break
-            printMe += "\n"
+            if k != ceil(log2(self.__mCount)) -1:
+                printMe += "\n\n"
 
-        
+
         return printMe 
 
 
@@ -87,11 +93,10 @@ class Heap ( object ):
 
 
 def main():
-     heap = Heap(["x", 20,10,11,7,2,4,5,3])
-     heap.add(15)
-     heap.add(25)
-     heap.add(12)
-     heap.add(18)
-     heap.add(8)
-     print(heap)
+    heap = Heap()
+    for i in range(32):
+        heap.add(random.randint(1, 99))
+
+
+    print(heap)
 main()
