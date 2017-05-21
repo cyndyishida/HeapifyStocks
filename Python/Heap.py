@@ -1,5 +1,5 @@
 from math import ceil, log2
-import random
+from random import randint
 
 def swap(collection, a, b):
     c = collection[a]
@@ -17,17 +17,17 @@ class Heap(object):
 
     def __str__(self):
         printMe = "Heap contains: {} nodes\n".format(self.__mCount)
-        height = (ceil(log2(self.__mCount)))
+        height = ceil(log2(self.__mCount))
         i = 1
         max_len = 2 ** height * 2
-        for k in range(height):
-            for n in range(2**k) :
+        for k in range(height +1 ):
+            for n in range( 2**k ):
                 if i <= self.__mCount:
                     wid = ceil(max_len/ (2 **k))
                     num = "{0:{1}>2d}".format(self.__mList[i], "0")
                     printMe += "{:^{width}}".format(num, width = wid)
                     i += 1
-                else:
+                else:  # in case where last level has less then 2^current level nodes
                     break
             if k != height -1:
                 printMe += "\n"
@@ -46,22 +46,33 @@ class Heap(object):
         i = 1 #index of current element to place
         while 2* i < self.__mCount :
             if  2 * i +1 > self.__mCount:
-                if self.__mList[2* i] < self.__mList[i] :
+                if self.__mList[i] > self.__mList[2* i]   :   # only left child 
                     swap(self.__mList, 2*i, i)
                     i *= 2
             else:
-                if self.__mList[2* i] > self.__mList[2* i +1]:
-                    swap(self.__mList, 2*i, i)
-                    i *= 2
+                if self.__mList[2* i] > self.__mList[2* i +1]: # break ties w/ 2 children
+                    if self.__mList[i] > self.__mList[2* i]: 
+                        swap(self.__mList, 2*i, i)
+                        i *= 2
+                    elif self.__mList[i] > self.__mList[2* i + 1 ]:
+                        swap(self.__mList, 2*i+1, i)
+                        i *= (2 + 1 )
+                    
                 else:
-                    swap(self.__mList, 2*i+1, i)
-                    i *= (2 + 1 )
+
+                    if self.__mList[i] > self.__mList[2* i + 1 ]:
+                        swap(self.__mList, 2*i+1, i)
+                        i *= (2 + 1 )
+                    elif self.__mList[i] > self.__mList[2* i]: 
+                        swap(self.__mList, 2*i, i)
+                        i *= 2
+
 
     def percolateUp(self):
         '''accurately maintains heap after element has been added '''
         i = self.__mCount
         while i//2 != 0:
-            if self.__mList[i // 2] < self.__mList[i]:
+            if self.__mList[i] > self.__mList[i // 2] :
                 swap(self.__mList, i//2, i)
                 i //= 2
             else:
@@ -77,9 +88,23 @@ class Heap(object):
         self.__mCount +=1
         self.percolateUp()
 
+
 def main():
-    heap = Heap()
-    for i in range(32):
-        heap.add(random.randint(1, 99))
-    print(heap)
+    max_heap = Heap()
+    hold  = []
+    for i in range(randint(10,40)):
+            x = randint(1, 99)
+            max_heap.add(x)
+            hold.append(x)
+    '''
+    for i in range(randint(1,13)):
+        if i % 2:
+            x = randint(1, 99)
+            max_heap.add(x)
+            hold.append(x)
+        else:
+            max_heap.remove()
+    '''
+    print(max_heap)
+    print(len(hold) )
 main()
