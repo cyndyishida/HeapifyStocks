@@ -20,24 +20,27 @@ class Heap(object):
         height = ceil(log2(self.__mCount))
         i = 1
         max_len = 2 ** height * 2
-        for k in range(height +1 ):
-            for n in range( 2**k ):
+        for k in range(height + 1):
+            for n in range(2**k):
                 if i <= self.__mCount:
-                    wid = ceil(max_len/ (2 **k))
+                    wid = ceil(max_len/(2**k))
                     num = "{0:{1}>2d}".format(self.__mList[i], "0")
                     printMe += "{:^{width}}".format(num, width = wid)
                     i += 1
                 else:  # in case where last level has less then 2^current level nodes
                     break
-            if k != height -1:
+            if k != height - 1:
                 printMe += "\n"
-                for j in range(2**(height - k - 1) - 1):
+                for j in range(int(2**(height - k - 1)) - 1):
                     for h in range(2**k):
-                        path = '/' + (j+1)*2*' ' + '\\'
-                        wid = ceil(max_len/ (2 **k))
+                        index = int(2**(k)) + h
+                        left = '/' if 2*index <= self.__mCount else ' '
+                        middle = (j+1)*2*' '
+                        right = '\\' if 2*index+1 <= self.__mCount else ' '
+                        path = left + middle + right
+                        wid = ceil(max_len/(2 **k))
                         printMe += "{:^{width}}".format(path, width = wid)
                     printMe += '\n'
-
         return printMe
 
     def percolateDown(self):
@@ -46,24 +49,24 @@ class Heap(object):
         i = 1 #index of current element to place
         while 2* i < self.__mCount :
             if  2 * i +1 > self.__mCount:
-                if self.__mList[i] > self.__mList[2* i]   :   # only left child 
+                if self.__mList[i] > self.__mList[2* i]   :   # only left child
                     swap(self.__mList, 2*i, i)
                     i *= 2
             else:
                 if self.__mList[2* i] > self.__mList[2* i +1]: # break ties w/ 2 children
-                    if self.__mList[i] > self.__mList[2* i]: 
+                    if self.__mList[i] > self.__mList[2* i]:
                         swap(self.__mList, 2*i, i)
                         i *= 2
                     elif self.__mList[i] > self.__mList[2* i + 1 ]:
                         swap(self.__mList, 2*i+1, i)
                         i *= (2 + 1 )
-                    
+
                 else:
 
                     if self.__mList[i] > self.__mList[2* i + 1 ]:
                         swap(self.__mList, 2*i+1, i)
                         i *= (2 + 1 )
-                    elif self.__mList[i] > self.__mList[2* i]: 
+                    elif self.__mList[i] > self.__mList[2* i]:
                         swap(self.__mList, 2*i, i)
                         i *= 2
 
