@@ -1,5 +1,5 @@
 #problem 10.1 Sorted Merge
-
+'''
 
 def sortme(a ,b ):
     for i in b:
@@ -40,14 +40,19 @@ def binSearch(a, element):
     return insertindex
 
 
+'''
 
 
+'''
+#DP 
 
+careful brute force 
 
-A = [1,2,3,7,10,13]
-B = [1.2, -22]
-sortme(A,B)
-print(A)
+text justification
+1. 
+
+'''
+
 
 
 
