@@ -18,22 +18,21 @@ class Heap(object):
     def __str__(self):
 
 
-        printMe = "Heap contains: {} nodes\n".format(self.__mCount)
-        height = ceil(log2(self.__mCount))
-        i = 1
-        max_len = 2 ** height * 2
-        for k in range(height + 1   ):
-            for n in range( 2**k ):
-                if i <= self.__mCount:
-                    wid = ceil(max_len/ (2 **k))
-                    num = "{0:{1}>2d}".format(self.__mList[i], "0")
-                    printMe += "{0:{1}^{width}}".format(num,"-" ,width = wid)
-                    i += 1
-                else:  # in case where last level has less then 2^current level nodes
-                    break
-            if k != height:
-                printMe += "\n\n"
-        '''
+        # printMe = "Heap contains: {} nodes\n".format(self.__mCount)
+        # height = ceil(log2(self.__mCount))
+        # i = 1
+        # max_len = 2 ** height * 2
+        # for k in range(height + 1   ):
+        #     for n in range( 2**k ):
+        #         if i <= self.__mCount:
+        #             wid = ceil(max_len/ (2 **k))
+        #             num = "{0:{1}>2d}".format(self.__mList[i], "0")
+        #             printMe += "{0:{1}^{width}}".format(num,"-" ,width = wid)
+        #             i += 1
+        #         else:  # in case where last level has less then 2^current level nodes
+        #             break
+        #     if k != height:
+        #         printMe += "\n\n"
         printMe = "Heap contains: {} nodes\n".format(self.__mCount)
         height = ceil(log2(self.__mCount))
         i = 1
@@ -52,11 +51,15 @@ class Heap(object):
                 
                 for j in range( int( 2**(height - k - 1 ) ) ) :
                     for h in range(2**k):
-                        path = '/' + (j+1)*2*' ' + '\\'
-                        wid = ceil(max_len/ (2 **k))
+                        index = int(2**(k)) + h
+                        left = '/' if 2*index <= self.__mCount else ' '
+                        middle = (j+1)*2*' '
+                        right = '\\' if 2*index+1 <= self.__mCount else ' '
+                        path = left + middle + right
+                        wid = ceil(max_len/(2 **k))
                         printMe += "{:^{width}}".format(path, width = wid)
                     printMe += '\n'
-        '''
+
         return printMe
 
     def percolateDown(self):
@@ -112,19 +115,17 @@ def main():
     max_heap = Heap()
     hold  = []
     # randint(5,16)
-    for i in range(33):
+    for i in range(17):
             x = randint(1, 99)
             max_heap.add(x)
             hold.append(x)
-    '''
-    for i in range(randint(1,13)):
+    for i in range(3):
         if i % 2:
             x = randint(1, 99)
             max_heap.add(x)
             hold.append(x)
         else:
             max_heap.remove()
-    '''
     print(max_heap)
     print(hold)
 main()
