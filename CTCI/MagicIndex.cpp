@@ -52,12 +52,6 @@ bool MagicIndex(const vector<int> &T, int l, int h)
     {
         return false;
     }
-
-
-
-
-
-
     
 }
 
