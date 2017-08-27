@@ -119,13 +119,13 @@ def main():
             x = randint(1, 99)
             max_heap.add(x)
             hold.append(x)
-    for i in range(3):
-        if i % 2:
-            x = randint(1, 99)
-            max_heap.add(x)
-            hold.append(x)
-        else:
-            max_heap.remove()
+#    for i in range(3):
+#        if i % 2:
+#            x = randint(1, 99)
+#            max_heap.add(x)
+#            hold.append(x)
+#        else:
+#            max_heap.remove()
     print(max_heap)
     print(hold)
 main()
