@@ -1,0 +1,37 @@
+
+
+Testcases:                                          85 PTS
+
+Testcase #00:                                        __/8.5
+- simple all positive 
+
+Testcase #01:                                        __/8.5
+- simple all positive
+
+Testcase #02:                                        __/8.5
+- simple positive negative
+
+Testcase #03:                                        __/8.5
+- simple positive negative (all adds)
+
+Testcase #04:                                        __/8.5
+- simple all negative
+
+Testcase #05:                                        __/8.5
+- large values all positive 
+
+Testcase #06:                                        __/8.5
+- large values all positive ~20000 instructions
+
+Testcase #07:                                        __/8.5
+- large values all negative ~ 20000 instructions
+
+Testcase #08:                                        __/8.5
+- large values all negative ~ 20000 instructions
+
+Testcase #09:                                        __/8.5
+- postiive/negative values ~ 4000 instructions
+
+
+Add Operation                               __/
+Remove Operation 
