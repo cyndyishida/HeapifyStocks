@@ -1,7 +1,7 @@
 import RunningMedian as student
 import RunningMedian_Solution as answer
 
-SCALE_FACTOR = 8.5
+SCALE_FACTOR = 7
 TESTCASE_NUM = 10
 
 def run_testcase(fp):

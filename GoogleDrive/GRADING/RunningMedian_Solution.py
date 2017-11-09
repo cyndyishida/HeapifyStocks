@@ -18,10 +18,7 @@ class RunningMedian:
     def get_median(self):
         if len(self.maxH) == len(self.minH):
             return_val = (-self.maxH[0] + self.minH[0]) /2
-            if return_val %1 == 0:
-                return int(return_val)
-            else:
-                return return_val
+            return return_val
         else:
             if len(self.maxH) > len(self.minH):
                 return -self.maxH[0]

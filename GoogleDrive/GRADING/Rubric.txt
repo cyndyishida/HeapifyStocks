@@ -1,37 +1,48 @@
+Testcases:                                          70 PTS
 
-
-Testcases:                                          85 PTS
-
-Testcase #00:                                        __/8.5
+Testcase #00:                                        __/7
 - simple all positive 
 
-Testcase #01:                                        __/8.5
+Testcase #01:                                        __/7
 - simple all positive
 
-Testcase #02:                                        __/8.5
+Testcase #02:                                        __/7
 - simple positive negative
 
-Testcase #03:                                        __/8.5
+Testcase #03:                                        __/7
 - simple positive negative (all adds)
 
-Testcase #04:                                        __/8.5
+Testcase #04:                                        __/7
 - simple all negative
 
-Testcase #05:                                        __/8.5
+Testcase #05:                                        __/7
 - large values all positive 
 
-Testcase #06:                                        __/8.5
+Testcase #06:                                        __/7
 - large values all positive ~20000 instructions
 
-Testcase #07:                                        __/8.5
+Testcase #07:                                        __/7
 - large values all negative ~ 20000 instructions
 
-Testcase #08:                                        __/8.5
+Testcase #08:                                        __/7
 - large values all negative ~ 20000 instructions
 
-Testcase #09:                                        __/8.5
+Testcase #09:                                        __/7
 - postiive/negative values ~ 4000 instructions
 
 
-Add Operation                               __/
-Remove Operation 
+Overall Add Logic in O(log(N))                       __/10
+Overall Remove Logic in O(N)                         __/10
+Get Median Operation in O(1)                         __/5
+
+Post/Pre/Docstrings/Documentation                    __/5 
+
+
+Deductions:
+Using Bisect Module/Sorted Vector                   TOTAL_SCORE = TOTAL_SCORE*.60 
+Any Error that causes Grading Script to fail        TOTAL_SCORE = TOTAL_SCORE *.75
+
+
+TOTAL_SCORE                                 ___/100
+
+
